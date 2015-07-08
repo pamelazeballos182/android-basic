@@ -19,9 +19,11 @@ public class Frag1 extends Fragment {
     private EditText mEditTextTemperature;
     private EditText mEditTextHumidity;
     private EditText mEditTextPressure;
+    private EditText mEditTextWeather;
 
     private Button mButton;
     private boolean mStarted;
+    private String stringSearch;
 
     private String uriAPI;
     HandleJSON obj;
@@ -38,13 +40,14 @@ public class Frag1 extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_frag1, container, false);
 
-        uriAPI = "http://api.openweathermap.org/data/2.5/weather?q=Cochabamba,BO";
 
+        mEditTextWeather = (EditText) rootView.findViewById(R.id.weatherTextField);
         mEditTextMainWeather = (EditText) rootView.findViewById(R.id.editTextMainWeather);
         mEditTextDescriptionWeather = (EditText) rootView.findViewById(R.id.editTextDescriptionWeather);
         mEditTextTemperature = (EditText) rootView.findViewById(R.id.editTextTemperature);
         mEditTextHumidity = (EditText) rootView.findViewById(R.id.editTextHumidity);
         mEditTextPressure = (EditText) rootView.findViewById(R.id.editTextPressure);
+
 
         mButton = (Button) rootView.findViewById(R.id.buttonCurrent);
         mButton.setOnClickListener(new View.OnClickListener()
@@ -52,6 +55,9 @@ public class Frag1 extends Fragment {
             @Override
             public void onClick(View view) {
                 String msg="Loading current weather";
+                stringSearch = mEditTextWeather.getText().toString();
+                uriAPI = "http://api.openweathermap.org/data/2.5/weather?q="+stringSearch+",";
+                System.out.println("************ "+uriAPI);
                 Toast toast = Toast.makeText(getActivity().getApplicationContext(), msg, Toast.LENGTH_LONG);
                 toast.show();
 
