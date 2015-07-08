@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TodoApplication</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Add Task</string>
+    <string name="questionTask">What do you want to do?</string>
+</resources>
